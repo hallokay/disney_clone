@@ -1,30 +1,33 @@
 import styled from 'styled-components'
-import { auth, provider } from '../firebase.js'
 import { NavMenu } from './index'
+import { auth, provider } from '../config/firebase'
+// 이메일과 비밀번호로 로그인 할 때
+import { createUserWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 
 const Header = () => {
-    const handleAuth = () => {
-        auth.signInWithPopup(provider)
-        .then((result) => {
-            console.log(result);
-        })
-        .catch(err => {
-            alert(err.message)
-        })
+    const handleAuth = async () => {
+        try {
+            // await createUserWithEmailAndPassword(auth, email, password)
+
+            await signInWithPopup(auth, provider)
+        } catch (err) {
+            console.log(err);
+        }
+
     }
-  return (
-    <Nav>
-      <Logo>
-        <img src="/images/logo.svg" alt="" />
-      </Logo>
-      <NavMenu />
-      <LoginBtn onClick={handleAuth}>Login</LoginBtn>
-    </Nav>
-  );
+    return (
+        <Nav>
+            <Logo>
+                <img src="/images/logo.svg" alt="" />
+            </Logo>
+            <NavMenu />
+            <LoginBtn onClick={handleAuth}>Login</LoginBtn>
+        </Nav>
+    );
 }
 
-const Nav = styled.nav `
+const Nav = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +41,7 @@ const Nav = styled.nav `
     letter-spacing: 1.6px;
     z-index: 3;
 `
-const Logo = styled.a `
+const Logo = styled.a`
     padding: 0;
     width: 80px;
     margin-top: 4px;
