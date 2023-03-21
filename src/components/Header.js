@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import styled from "styled-components";
-import { NavMenu } from "./index";
+import { NavMenu, UserInfo } from "./index";
 import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
 // 파이어베이스 - 이메일과 비밀번호로 로그인 할 때
@@ -23,9 +24,21 @@ const Header = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-//   const {} = useSelector((state) => state.user);
+
+  useEffect(() => {
+    // auth정보가 있으면 유저로 받아서 홈으로 이동시켜주고 아니면 로그인페이지에..
+    auth.onAuthStateChanged(user => {
+      if(user) {
+        setUser(user)
+        navigate('/home');
+      } else {
+        navigate("/ ");
+      }
+    })
+  }, [userName])
 
   const handleAuth = async () => {
+    if(!userName) {
       // await createUserWithEmailAndPassword(auth, email, password)
       await signInWithPopup(auth, provider)
         .then((result) => {
@@ -36,6 +49,15 @@ const Header = () => {
         .catch((err) => {
           alert(err.message);
         });
+
+    } else {
+      auth.signOut()
+      .then(() => {
+        dispatch(setSignOut());
+        navigate("/");
+
+      })
+    }
 
   };
 
@@ -59,7 +81,11 @@ const Header = () => {
       ) : (
         <>
           <NavMenu />
-          <UserImg src={userPhoto} alt={userName} />
+          <UserInfo
+            userPhoto={userPhoto}
+            userName={userName}
+            handleAuth={handleAuth}
+          />
         </>
       )}
     </Nav>
@@ -109,10 +135,6 @@ const LoginBtn = styled.a`
   }
 `;
 
-const UserImg = styled.img `
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-`
+
 
 export default Header;

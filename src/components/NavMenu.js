@@ -65,7 +65,16 @@ const NavMenuList = styled.div`
         right: 0;
       }
     }
+
+    @media (max-width: 1200px) {
+      padding: 0 5px;
+      span {
+        letter-spacing: .8px;
+      }
+    }
   }
+
+  /* 모바일 테블릿 상태일때 */
   @media (max-width: 768px) {
     display: none;
   }
