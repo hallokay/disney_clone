@@ -4,5 +4,6 @@ import UserInfo from "./UserInfo";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Recommends from "./Recommends";
+import NewDisney from "./NewDisney";
 
-export { Header, NavMenu, UserInfo, ImgSlider, Viewers, Recommends };
+export { Header, NavMenu, UserInfo, ImgSlider, Viewers, Recommends, NewDisney };

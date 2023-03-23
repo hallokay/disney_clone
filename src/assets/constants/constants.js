@@ -8,12 +8,12 @@ export const navMenu = [
 ];
 
 export const slideImgs = [
-  {name: 'slide-img1', url: '/images/slider-badag.jpg'},
-  {name: 'slide-img2', url: '/images/slider-badging.jpg'},
-  {name: 'slide-img3', url: '/images/slider-scale.jpg'},
-  {name: 'slide-img4', url: '/images/slider-scales.jpg'},
+  { name: "slide-img1", url: "/images/slider-badag.jpg" },
+  { name: "slide-img2", url: "/images/slider-badging.jpg" },
+  { name: "slide-img3", url: "/images/slider-scale.jpg" },
+  { name: "slide-img4", url: "/images/slider-scales.jpg" },
   // {name: '', url: '/images/slider-bagag.jpg'}
-]
+];
 
 export const viewerUrl = [
   {
