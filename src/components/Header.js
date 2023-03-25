@@ -19,7 +19,7 @@ import {
   selectUserPhoto,
 } from "../store/features/user/userSlice";
 
-const Header = () => { 
+const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
@@ -27,49 +27,45 @@ const Header = () => {
 
   useEffect(() => {
     // auth정보가 있으면 유저로 받아서 홈으로 이동시켜주고 아니면 로그인페이지에..
-    auth.onAuthStateChanged(user => {
-      if(user) {
-        setUser(user)
-        navigate('/home');
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+        navigate("/home");
       } else {
-        navigate("/ ");
+        navigate("/");
       }
-    })
-  }, [userName])
+    });
+  }, [userName]);
 
   const handleAuth = async () => {
-    if(!userName) {
+    if (!userName) {
       // await createUserWithEmailAndPassword(auth, email, password)
       await signInWithPopup(auth, provider)
         .then((result) => {
           // 여기 받아온 로그인 유저 정보를 리덕스에 저장
-        //   console.log(result);
-          setUser(result?.user);
+          console.log(result);
+          // setUser(result?.user);
         })
         .catch((err) => {
           alert(err.message);
         });
-
     } else {
-      auth.signOut()
-      .then(() => {
+      auth.signOut().then(() => {
         dispatch(setSignOut());
         navigate("/");
-
-      })
+      });
     }
-
   };
 
   const setUser = (user) => {
-          dispatch(
-            setUserLoginDetails({
-              name: user?.displayName,
-              email: user?.email,
-              photo: user?.photoURL,
-            })
-          );
-  }
+    dispatch(
+      setUserLoginDetails({
+        name: user?.displayName,
+        email: user?.email,
+        photo: user?.photoURL,
+      })
+    );
+  };
   return (
     <Nav>
       <Logo>
@@ -134,7 +130,5 @@ const LoginBtn = styled.a`
     border-color: transparent;
   }
 `;
-
-
 
 export default Header;

@@ -5,5 +5,7 @@ import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Recommends from "./Recommends";
 import NewDisney from "./NewDisney";
+import Originals from './Originals'
+import Trending from "./Trending";
 
-export { Header, NavMenu, UserInfo, ImgSlider, Viewers, Recommends, NewDisney };
+export { Header, NavMenu, UserInfo, ImgSlider, Viewers, Recommends, NewDisney, Trending, Originals };

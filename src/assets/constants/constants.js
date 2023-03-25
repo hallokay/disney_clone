@@ -5,6 +5,7 @@ export const navMenu = [
   { name: "original", to: "/original", icon: "/images/original-icon.svg" },
   { name: "movies", to: "/movies", icon: "/images/movie-icon.svg" },
   { name: "series", to: "/series", icon: "/images/series-icon.svg" },
+  { name: "add", to: "/add", icon: "/images/series-icon.svg" },
 ];
 
 export const slideImgs = [
