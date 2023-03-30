@@ -12,7 +12,7 @@ const userSlice = createSlice({
     reducers: {
         // 로그인 했을때 정보 받아서 저장
         setUserLoginDetails: (state, action) => {
-            console.log( '저장소',action);
+            console.log( '유저정보저장소',action);
             state.name = action.payload.name;
             state.email = action.payload.email;
             state.photo = action.payload.photo;

@@ -35,7 +35,7 @@ const Header = () => {
         navigate("/");
       }
     });
-  }, [userName]);
+  }, [auth]);
 
   const handleAuth = async () => {
     if (!userName) {
@@ -101,6 +101,11 @@ const Nav = styled.nav`
   padding: 0 36px;
   letter-spacing: 1.6px;
   z-index: 3;
+
+  /* 모바일 테블릿 상태일때 */
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 `;
 const Logo = styled.a`
   padding: 0;
@@ -112,6 +117,11 @@ const Logo = styled.a`
   img {
     display: block;
     width: 100%;
+  }
+
+  /* 모바일 테블릿 상태일때 */
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 const LoginBtn = styled.a`

@@ -12,16 +12,17 @@ import { collection, getDocs } from "firebase/firestore";
 const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  const data = {
-    recommends: [],
-    newDisneys: [],
-    originals: [],
-    trending: [],
-  };
+ 
   // 파이어베이스 스토어 movies 컬렉션에서 데이터를 가져옴
   // const moviesCollectionRef = collection(db, 'movies');
 
   const fetchData = async () => {
+      const data = {
+        recommends: [],
+        newDisneys: [],
+        originals: [],
+        trending: [],
+      };
     // 비동기로 파이어베이스 스토어에서 데이터 받기
     // const snapshot = await getDocs(moviesCollectionRef);
     // const dataArr = snapshot.docs.map((doc) => ({
@@ -64,6 +65,7 @@ const Home = () => {
           break;
       }
     });
+
     dispatch(
       setMovies({
         recommend: data.recommends,
@@ -75,7 +77,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect", data);
     fetchData();
   }, [userName]);
   return (

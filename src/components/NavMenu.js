@@ -69,14 +69,27 @@ const NavMenuList = styled.div`
     @media (max-width: 1200px) {
       padding: 0 5px;
       span {
-        letter-spacing: .8px;
+        letter-spacing: 0.8px;
+      }
+    }
+    @media (max-width: 768px) {
+      padding: 0 5px;
+
+      img {
+        height: 15px;
+        min-width: 15px;
+        margin-right: 3px;
+      }
+
+      span {
+        letter-spacing: -0.3px;
       }
     }
   }
 
   /* 모바일 테블릿 상태일때 */
   @media (max-width: 768px) {
-    display: none;
+    margin-left: 0px;
   }
 `;
 
